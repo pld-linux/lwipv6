@@ -1,0 +1,10 @@
+--- lwipv6-1.5a/lwip-contrib/ports/unix/proj/lib/Makefile.am.orig	2011-12-13 10:25:28.000000000 +0100
++++ lwipv6-1.5a/lwip-contrib/ports/unix/proj/lib/Makefile.am	2015-10-06 16:59:43.019316338 +0200
+@@ -242,6 +242,7 @@
+ 
+ liblwipv6_la_SOURCES = $(LWIPFILES) $(LWIPHEADERS) sharedlib.c unixlib.c
+ liblwipv6_la_LDFLAGS = -version-number 2:0:0 -Xcompiler -nostartfiles
++liblwip_la_LIBADD = -ldl
+ # liblwip_la_LIBADD = sharedlib.lo unixlib.lo
+ 
+ include_HEADERS = $(LWIPARCH)/include/lwipv6.h
