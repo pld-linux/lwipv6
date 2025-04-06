@@ -5,10 +5,10 @@ Version:	1.5a
 Release:	1
 License:	GPL v2+
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/view-os/%{name}-%{version}.tar.bz2
+Source0:	https://downloads.sourceforge.net/view-os/%{name}-%{version}.tar.bz2
 # Source0-md5:	d07cbd23feebe0eb749470fe49dd90cb
 Patch0:		%{name}-link.patch
-URL:		http://wiki.v2.cs.unibo.it/wiki/index.php/LWIPV6
+URL:		http://wiki.v2.cs.unibo.it/wiki/index.php%3Ftitle=LWIPV6.html
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
 BuildRequires:	libpcap-devel
