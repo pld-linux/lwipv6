@@ -1,19 +1,23 @@
-Summary:	LWIPV6a - light weight IP v 6
-Summary(pl.UTF-8):	LWIPV6a - lekkie IP v 6
+Summary:	LWIPV6a - light weight IPv6
+Summary(pl.UTF-8):	LWIPV6a - lekkie IPv6
 Name:		lwipv6
 Version:	1.5a
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Libraries
 Source0:	https://downloads.sourceforge.net/view-os/%{name}-%{version}.tar.bz2
 # Source0-md5:	d07cbd23feebe0eb749470fe49dd90cb
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-includes.patch
+Patch2:		%{name}-optflags.patch
 URL:		http://wiki.v2.cs.unibo.it/wiki/index.php%3Ftitle=LWIPV6.html
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
 BuildRequires:	libpcap-devel
 BuildRequires:	libtool
 BuildRequires:	vde2-devel >= 2
+# dlopened
+Suggests:	vde2-libs%{?_isa}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,6 +55,8 @@ Statyczna biblioteka LWIPV6.
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %{__libtoolize}

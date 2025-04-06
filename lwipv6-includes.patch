@@ -1,0 +1,21 @@
+--- lwipv6-1.5a/lwip-v6/src/api/sockets.c.orig	2011-12-13 10:25:28.000000000 +0100
++++ lwipv6-1.5a/lwip-v6/src/api/sockets.c	2025-03-31 19:43:06.513449361 +0200
+@@ -53,6 +53,7 @@
+  */
+ 
+ #include <linux/limits.h>
++#include <linux/sockios.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/select.h>
+--- lwipv6-1.5a/lwip-v6/src/core/netif.c.orig	2011-12-13 10:25:28.000000000 +0100
++++ lwipv6-1.5a/lwip-v6/src/core/netif.c	2025-03-31 19:49:39.670334612 +0200
+@@ -56,6 +56,8 @@
+  *
+  */
+ 
++#include <unistd.h>
++
+ #include "lwip/opt.h"
+ 
+ #include "lwip/def.h"
