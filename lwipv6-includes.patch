@@ -19,3 +19,51 @@
  #include "lwip/opt.h"
  
  #include "lwip/def.h"
+--- lwipv6-1.5a/lwip-v6/src/core/tcp.c.orig	2011-12-13 10:25:28.000000000 +0100
++++ lwipv6-1.5a/lwip-v6/src/core/tcp.c	2025-04-06 08:07:14.867128734 +0200
+@@ -73,6 +73,7 @@
+ #include "lwip/def.h"
+ #include "lwip/mem.h"
+ #include "lwip/memp.h"
++#include "lwip/lwslirp.h"
+ 
+ #include "lwip/tcp.h"
+ #if LWIP_TCP
+--- lwipv6-1.5a/lwip-v6/src/api/tcpip.c.orig	2011-12-13 10:25:28.000000000 +0100
++++ lwipv6-1.5a/lwip-v6/src/api/tcpip.c	2025-04-06 08:11:14.798161868 +0200
+@@ -56,6 +56,7 @@
+ 
+ #include "lwip/sys.h"
+ 
++#include "lwip/api_msg.h"
+ #include "lwip/memp.h"
+ #include "lwip/pbuf.h"
+ 
+@@ -160,6 +161,9 @@ init_layers(struct stack *stack)
+ #endif
+ }
+ 
++void
++tcp_shutdown(struct stack *stack);
++
+ static void 
+ shutdown_layers(struct stack *stack)
+ {
+--- lwipv6-1.5a/lwip-v6/src/api/sockets.c.orig	2025-04-06 08:08:06.210683152 +0200
++++ lwipv6-1.5a/lwip-v6/src/api/sockets.c	2025-04-06 08:13:34.278762468 +0200
+@@ -52,6 +52,7 @@
+  *
+  */
+ 
++#define _GNU_SOURCE
+ #include <linux/limits.h>
+ #include <linux/sockios.h>
+ #include <sys/types.h>
+@@ -68,6 +69,7 @@
+ #include "lwip/arch.h"
+ #include "lwip/sys.h"
+ #include "lwip/mem.h"
++#include "netif/etharp.h"
+ 
+ #define LWIP_TIMEVAL_PRIVATE
+ #include "lwip/sockets.h"

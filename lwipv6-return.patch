@@ -1,0 +1,11 @@
+--- lwipv6-1.5a/lwip-contrib/ports/unix/netif/vdeif.c.orig	2011-12-13 10:25:28.000000000 +0100
++++ lwipv6-1.5a/lwip-contrib/ports/unix/netif/vdeif.c	2025-04-06 09:11:21.463777210 +0200
+@@ -482,7 +482,7 @@ static ssize_t vdeif_streampkt_input(voi
+ 	p = low_level_stream_input(vdeif, netif->flags, buf, count);
+ 	if (p == NULL) {
+ 		LWIP_DEBUGF(VDEIF_DEBUG, ("vdeif_input: low_level_input returned NULL\n"));
+-		return;
++		return -1;
+ 	}
+ 
+ 	vde_dispatch_input(netif, p);

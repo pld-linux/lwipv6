@@ -10,6 +10,7 @@ Source0:	https://downloads.sourceforge.net/view-os/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-includes.patch
 Patch2:		%{name}-optflags.patch
+Patch3:		%{name}-return.patch
 URL:		http://wiki.v2.cs.unibo.it/wiki/index.php%3Ftitle=LWIPV6.html
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -57,6 +58,7 @@ Statyczna biblioteka LWIPV6.
 %patch -P0 -p1
 %patch -P1 -p1
 %patch -P2 -p1
+%patch -P3 -p1
 
 %build
 %{__libtoolize}
